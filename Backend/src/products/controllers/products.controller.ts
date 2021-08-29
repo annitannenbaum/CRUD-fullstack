@@ -12,11 +12,6 @@ class ProductsController {
         res.status(200).send(products);
     }
 
-    async getProductByTitle(req: express.Request, res: express.Response) {
-        const product = await productsService.getByTitle(req.body.title);
-        res.status(200).send(product);
-    }
-
     async createProduct(req: express.Request, res: express.Response) {
         const productId = await productsService.create(req.body);
         res.status(201).send({ id: productId});

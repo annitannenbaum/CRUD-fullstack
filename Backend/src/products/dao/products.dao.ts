@@ -1,69 +1,64 @@
 import { CreateProductDto } from "../dto/create.product.dto";
 import { PutProductDto } from "../dto/put.product.dto";
 import { PatchProductDto } from "../dto/patch.product.dto";
+import mongooseService from "../../common/services/mongoose.service";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import debug from 'debug';
 
 const log: debug.IDebugger = debug('app:in-memory-dao');
 
 class ProductsDao {
-    products: CreateProductDto[] = [];
+
+    Schema = mongooseService.getMongoose().Schema;
+
+    productSchema = new this.Schema({
+        _id: String,
+        title: String,
+        name: String,
+        description: String
+    })
+
+    Product = mongooseService.getMongoose().model('Products', this.productSchema);
 
     constructor() {
         log('Created new instance of ProductsDao');
     }
 
-    async addProduct(product: CreateProductDto) {
-        product.id = uuidv4();
-        this.products.push(product);
-        
-        return product.id;
+    async addProduct(productFields: CreateProductDto) {
+        const productId = uuid();
+
+        const product = new this.Product({
+            _id: productId,
+            ...productFields
+        });
+
+        await product.save();
+
+        return productId;
+    }
+
+    async getProductById(productId: string) {
+        return this.Product.findOne({ _id: productId }).populate('Product').exec();
     }
 
     async getProducts() {
-        return this.products;
+        return this.Product.find()
+        .exec();
     }
 
-    async getProductByTitle(productTitle: string) {
-        let existingTitle = this.products.find((product: { title: string}) => product.title === productTitle);
-        return existingTitle;
-    }
+    async updateProductById(
+        productId: string,
+        productFields: PatchProductDto | PutProductDto
+        ) {
+            const existingProduct = await this.Product.findOneAndUpdate(
+                { _id: productId },
+                { $set: productFields },
+                { new: true }
+            ).exec();
 
-    async putProductById(productId: string, product: PutProductDto) {
-        const objIndex = this.products.findIndex(
-            (obj: { id: string}) => obj.id === productId
-        );
-
-        this.products.splice(objIndex, 1, product)
-
-        return `${product.id} updated via put.`;
-    }
-
-    async patchProductById(productId: string, product: PatchProductDto) {
-        const objIndex = this.products.findIndex(
-            (obj: { id: string }) => obj.id === productId
-        );
-
-        let currentProduct = this.products[objIndex];
-
-        const allowedPatchFields = [
-            'title',
-            'name',
-            'description'
-        ];
-
-        for (let field of allowedPatchFields) {
-            if (field in product) {
-                // @ts-ignore
-                currentProduct[field] = product[field];
-            }
-        }
-
-        this.products.splice(objIndex, 1, currentProduct);
-
-        return `${product.id} was patched.`;
+            return existingProduct;
     }
 }
 
