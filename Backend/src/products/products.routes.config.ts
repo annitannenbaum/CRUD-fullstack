@@ -15,15 +15,10 @@ export class ProductsRoutes extends CommonRoutesConfig {
             .get(productsController.listProducts)
             .post(
                 productsMiddleware.validateMandatoryFields,
-                productsMiddleware.validateNoDuplicateTitles,
                 productsController.createProduct
             );
 
         this.app.param('productId', productsMiddleware.extractProductId);
-
-        this.app
-            .route('/products/:productId')
-            .get(productsController.getProductByTitle);
 
         this.app
             .put('/products/:productId', [

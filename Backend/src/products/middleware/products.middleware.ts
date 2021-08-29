@@ -21,22 +21,6 @@ class ProductsMiddleWare {
         }
     }
 
-    async validateNoDuplicateTitles(
-        req: express.Request,
-        res: express.Response,
-        next: express.NextFunction
-    ) {
-        const product = await productsService.getByTitle(req.body.title);
-
-        if (product) {
-            res.status(400).send({
-                error: 'This title already exists.'
-            });
-        } else {
-            next();
-        }
-    }
-
     async extractProductId(
         req: express.Request,
         res: express.Response,

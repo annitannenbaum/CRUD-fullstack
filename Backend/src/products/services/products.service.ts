@@ -14,16 +14,12 @@ class ProductsService implements CRUD {
         return productsDao.addProduct(resource);
     }
 
-    async getByTitle(title: string) {
-        return productsDao.getProductByTitle(title);
-    }
-
     async putById(id: string, resource: PutProductDto) {
-        return productsDao.putProductById(id, resource)
+        return productsDao.updateProductById(id, resource)
     }
 
     async patchById(id: string, resource: PatchProductDto) {
-        return productsDao.patchProductById(id, resource)
+        return productsDao.updateProductById(id, resource)
     }
 }
 
