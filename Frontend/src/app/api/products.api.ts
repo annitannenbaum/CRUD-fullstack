@@ -14,4 +14,8 @@ export class ProductsService {
 
         // TO DO extract logic into env variable
     }
+
+    addProduct(product: Product) {
+        return this.http.post<Product>('http://localhost:3000/products', product);
+    }
 }

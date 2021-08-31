@@ -1,3 +1,7 @@
-body {
+@import 'variables';
+
+body, html {
     font-family: 'Roboto';
+    background-color: $color-secondary-light;
+    height: calc(100vh - 75px);
 }

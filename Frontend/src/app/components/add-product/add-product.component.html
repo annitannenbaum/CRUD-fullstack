@@ -1,1 +1,15 @@
-<p>add-product works!</p>
+<div class="add-product-wrapper">
+    <h3>Add A New Product</h3>
+    <form  class="product-form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <label for="title">Title</label>
+        <input id="title" type="text" formControlName="title">
+        
+        <label for="name">Name</label>
+        <input id="name" type="text" formControlName="name">
+    
+        <label for="description">Description</label>
+        <input id="description" type="text" formControlName="description">
+    
+        <button type="submit" [disabled]="!productForm.valid" class="submit-button">Add Product</button>
+    </form>
+</div>

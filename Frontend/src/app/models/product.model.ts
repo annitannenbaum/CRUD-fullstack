@@ -4,3 +4,9 @@ export interface Product {
     name: string,
     description?: string
 }
+
+export class Product {
+    public constructor(init?: Partial<Product>) {
+        Object.assign(this, init)
+    }
+}
