@@ -1,0 +1,42 @@
+@import 'variables';
+
+.products-list-wrapper {
+    margin: 2rem;
+    background-color: $color-white;
+    padding: 3rem;
+    box-shadow: $base-shadow;
+    height: 500px;
+
+    table {
+        border-collapse: collapse;
+        border: none;
+        outline: none;
+        min-width: 600px;
+
+        th {
+            text-align: start;
+            padding: .5rem;
+            background-color: $color-secondary-light;
+        }
+
+        td {
+            padding: .5rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        tr {
+
+            &:nth-child(odd) {
+                background-color: $color-secondary-light;
+            }
+        }
+    }
+
+    p {
+        color: $color-primary;
+        font-size: 12px;
+    }
+}

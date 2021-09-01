@@ -9,6 +9,8 @@
     
         <label for="description">Description</label>
         <input id="description" type="text" formControlName="description">
+
+        <p *ngIf="!productForm.valid">* Name and title are required.</p>
     
         <button type="submit" [disabled]="!productForm.valid" class="submit-button">Add Product</button>
     </form>

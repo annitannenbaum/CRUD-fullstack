@@ -1,1 +1,16 @@
+<div class="products-list-wrapper">
+    <h3>List of Products</h3>
+    <table>
+        <tr>
+            <th *ngFor="let column of headers">
+                {{ column }}
+            </th>
+        </tr>
 
+        <tr *ngFor="let product of products$ | async" (click)="onSelect(product._id)">
+            <td>{{ product.name }}</td>
+            <td>{{ product.description}}</td>
+        </tr>
+    </table>
+    <p>* Click on an item to edit or delete it.</p>
+</div>

@@ -15,6 +15,9 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { ProductsService } from './api/products.api';
 import { environment } from 'src/environments/environment';
 import { ProductsState } from './state/products.state';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductOverviewComponent } from './pages/product-overview/product-overview.component';
+import { ProductDetailViewComponent } from './pages/product-detail-view/product-detail-view.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ProductsState } from './state/products.state';
     HeaderComponent,
     ProductListComponent,
     AddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    ProductDetailsComponent,
+    ProductOverviewComponent,
+    ProductDetailViewComponent
   ],
   imports: [
     BrowserModule,

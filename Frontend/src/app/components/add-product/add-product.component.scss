@@ -2,9 +2,10 @@
 
 .add-product-wrapper {
     background-color: $color-white;
-    padding: 2rem;
+    padding: 3rem;
     margin: 2rem;
     box-shadow: $base-shadow;
+    height: 500px;
 
     .product-form {
         display: flex;
@@ -21,6 +22,13 @@
 
             &:hover {
                 color: $color-secondary-light;
+                cursor: pointer;
+            }
+
+            &:disabled {
+                background-color: $color-secondary-light;
+                color: $color-secondary-dark;
+                cursor: auto;
             }
         }
 
@@ -35,6 +43,21 @@
             border-radius: 0;
             padding: .5rem;
             margin: .5rem 0;
+
+            &:focus {
+                border: 1px solid $color-secondary-dark;
+                outline: none;
+            }
+
+            &:invalid {
+                outline: none;
+                border: 1px solid $color-primary;
+            }
+        }
+
+        p {
+            color: $color-primary;
+            font-size: 12px;
         }
     }
 

@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 
 import { ProductsService } from '../api/products.api';
 import { ProductsStateModel } from '../models/products.state.model';
-import { AddProduct } from './products.actions';
+import { AddProduct, GetAllProducts } from './products.actions';
 
 @State<ProductsStateModel>({
     name: 'products',
@@ -19,6 +19,20 @@ import { AddProduct } from './products.actions';
 export class ProductsState {
 
     constructor(private productsService: ProductsService) {}
+
+    @Action(GetAllProducts)
+    getAllProducts(ctx: StateContext<ProductsStateModel>) {
+        return this.productsService.getAllProducts().pipe(
+            tap(productsResult => {
+                const state = ctx.getState();
+                ctx.patchState({
+                    products: [
+                        ...productsResult
+                    ]
+                })
+            })
+        )
+    }
 
     @Action(AddProduct)
     addProduct(ctx: StateContext<ProductsStateModel>, action: AddProduct) {
