@@ -38,23 +38,6 @@
             margin-top: .5rem;
         }
 
-        input[type=text] {
-            border: 1px solid $color-secondary-light;
-            border-radius: 0;
-            padding: .5rem;
-            margin: .5rem 0;
-
-            &:focus {
-                border: 1px solid $color-secondary-dark;
-                outline: none;
-            }
-
-            &:invalid {
-                outline: none;
-                border: 1px solid $color-primary;
-            }
-        }
-
         p {
             color: $color-primary;
             font-size: 12px;

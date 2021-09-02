@@ -1,17 +1,23 @@
 <div class="add-product-wrapper">
     <h3>Add A New Product</h3>
     <form  class="product-form" [formGroup]="productForm" (ngSubmit)="onSubmit()">
-        <label for="title">Title</label>
-        <input id="title" type="text" formControlName="title">
-        
-        <label for="name">Name</label>
-        <input id="name" type="text" formControlName="name">
-    
-        <label for="description">Description</label>
-        <input id="description" type="text" formControlName="description">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" type="text" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" type="text" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" type="text" formControlName="description"></textarea>
+        </mat-form-field>
 
         <p *ngIf="!productForm.valid">* Name and title are required.</p>
     
-        <button type="submit" [disabled]="!productForm.valid" class="submit-button">Add Product</button>
+        <button mat-button color="primary" [disabled]="!productForm.valid" type="submit">Add Product</button>
     </form>
 </div>

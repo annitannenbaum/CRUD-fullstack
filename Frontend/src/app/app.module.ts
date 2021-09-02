@@ -19,6 +19,15 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductOverviewComponent } from './pages/product-overview/product-overview.component';
 import { ProductDetailViewComponent } from './pages/product-detail-view/product-detail-view.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +45,13 @@ import { ProductDetailViewComponent } from './pages/product-detail-view/product-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    BrowserAnimationsModule,
     NgxsModule.forRoot([ProductsState], {
       developmentMode: !environment.production
     })

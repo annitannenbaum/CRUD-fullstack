@@ -11,12 +11,21 @@
         border-collapse: collapse;
         border: none;
         outline: none;
-        min-width: 600px;
+        min-width: 700px;
 
         th {
             text-align: start;
             padding: .5rem;
             background-color: $color-secondary-light;
+            font-size: 16px;
+
+            &:first-child {
+                border-top-left-radius: 5px;
+            }
+
+            &:last-child {
+                border-top-right-radius: 5px;
+            }
         }
 
         td {
@@ -29,7 +38,7 @@
 
         tr {
 
-            &:nth-child(odd) {
+            &:nth-child(even) {
                 background-color: $color-secondary-light;
             }
         }
