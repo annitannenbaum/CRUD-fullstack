@@ -1,6 +1,6 @@
 # Overview
 
-This is a small fullstack app to create, edit and delete products.
+This is a small fullstack app to create and edit products.
 
 It utilizes Node and Express for the backend, MongoDB as a DB, chai and mocha for unit tests and Angular + Material for the frontend.
 
