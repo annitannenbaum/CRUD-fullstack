@@ -14,13 +14,8 @@ class ProductsController {
 
     async createProduct(req: express.Request, res: express.Response) {
         const productId = await productsService.create(req.body);
-        res.status(201).send({ id: productId});
+        res.status(201).send({ id: productId });
 
-    }
-
-    async patchProduct(req: express.Request, res: express.Response) {
-        log(await productsService.patchById(req.body.id, req.body));
-        res.status(204).send();
     }
 
     async putProduct(req: express.Request, res: express.Response) {

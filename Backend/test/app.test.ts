@@ -13,8 +13,11 @@ const firstProductBody = {
     description: 'test'
 };
 
-const newTitle = 'A Testier Product'
-const newName = 'The testier Product Name'
+const secondProductBody = {
+    title: 'Another Test Product',
+    name: 'The second Test Product',
+    description: 'test'
+}
 
 describe('Products', function() {
     let request: supertest.SuperAgentTest;
@@ -44,5 +47,12 @@ describe('Products', function() {
 
         expect(res.status).to.equal(200);
         expect(res.body).not.to.be.empty;
-    })
+    });
+
+    it('should allow a PUT to /products/:productid', async function () {
+        const res = await request.put(`/products/${firstProductIdTest}`).send(secondProductBody);
+
+        expect(res.status).to.equal(204);
+        expect(res.body).to.be.empty;
+    });
 });

@@ -1,0 +1,22 @@
+<div class="edit u-wrapper" *ngIf="currentProduct">
+    <h3>Edit Product</h3>
+    <form  class="product-form u-flex-column" [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput id="title" type="text" formControlName="title" placeholder="{{ currentProduct.title }}">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" type="text" formControlName="name" placeholder="{{ currentProduct.name }}">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" type="text" formControlName="description"
+            placeholder="{{ currentProduct.description }}"></textarea>
+        </mat-form-field>
+    
+        <button mat-button color="primary" [disabled]="!productForm.valid" type="submit">Edit Product</button>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+@import 'variables';
+
+.add-product {
+    height: 500px;
+
+    .product-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        button {
+            border: none;
+            background-color: $color-primary;
+            color: $color-white;
+            padding: .5rem;
+            margin: 2rem;
+            box-shadow: $base-shadow;
+
+            &:hover {
+                color: $color-secondary-light;
+                cursor: pointer;
+            }
+
+            &:disabled {
+                background-color: $color-secondary-light;
+                color: $color-secondary-dark;
+                cursor: auto;
+            }
+        }
+
+        label {
+            font-size: 12px;
+            color: $color-secondary-dark;
+            margin-top: .5rem;
+        }
+
+        p {
+            color: $color-primary;
+            font-size: 12px;
+        }
+    }
+
+}

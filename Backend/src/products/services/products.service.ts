@@ -2,7 +2,6 @@ import productsDao from "../dao/products.dao";
 import { CRUD } from "../../common/interfaces/crud.interface";
 import { CreateProductDto } from "../dto/create.product.dto";
 import { PutProductDto } from "../dto/put.product.dto";
-import { PatchProductDto } from "../dto/patch.product.dto";
 
 class ProductsService implements CRUD {
 
@@ -18,9 +17,6 @@ class ProductsService implements CRUD {
         return productsDao.updateProductById(id, resource)
     }
 
-    async patchById(id: string, resource: PatchProductDto) {
-        return productsDao.updateProductById(id, resource)
-    }
 }
 
 export default new ProductsService();

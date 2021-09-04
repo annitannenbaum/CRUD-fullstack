@@ -1,0 +1,17 @@
+@import 'variables';
+
+.edit {
+
+    .product-form {
+        justify-content: center;
+
+        button {
+            border: none;
+            background-color: $color-primary;
+            color: $color-white;
+            padding: .5rem;
+            margin: 2rem;
+            box-shadow: $base-shadow;
+        }
+    }
+}
