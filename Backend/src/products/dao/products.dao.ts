@@ -1,6 +1,5 @@
 import { CreateProductDto } from "../dto/create.product.dto";
 import { PutProductDto } from "../dto/put.product.dto";
-import { PatchProductDto } from "../dto/patch.product.dto";
 import mongooseService from "../../common/services/mongoose.service";
 
 import { v4 as uuid } from 'uuid';
@@ -50,7 +49,7 @@ class ProductsDao {
 
     async updateProductById(
         productId: string,
-        productFields: PatchProductDto | PutProductDto
+        productFields: PutProductDto
         ) {
             const existingProduct = await this.Product.findOneAndUpdate(
                 { _id: productId },

@@ -12,14 +12,14 @@ class MongooseService {
     };
 
     constructor() {
-        this.connectWithRetry();
+        this.connect();
     }
 
     getMongoose() {
         return mongoose;
     }
 
-    connectWithRetry = () => {
+    connect = () => {
         mongoose
             .connect('mongodb://localhost:27017/products', this.mongooseOptions)
             .then(() => {

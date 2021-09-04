@@ -26,12 +26,6 @@ export class ProductsRoutes extends CommonRoutesConfig {
                 productsController.putProduct
             ])
 
-        this.app
-            .patch(
-                '/products/:productId',
-                productsController.patchProduct
-            )
-
         return this.app;
     }
 }
