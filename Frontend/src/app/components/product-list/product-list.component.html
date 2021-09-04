@@ -1,4 +1,4 @@
-<div class="products-list-wrapper">
+<div class="products-list u-wrapper">
     <h3>List of Products</h3>
     <table mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="name">
@@ -18,7 +18,7 @@
 
     <mat-paginator [pageSize]="6"
         showFirstLastButtons 
-        aria-label="Select page of periodic elements">
+        aria-label="Select page of product list.">
     </mat-paginator>
-    <p>* Click on an item to edit or delete it.</p>
+    <p>* Click on an item to edit it.</p>
 </div>

@@ -1,6 +1,8 @@
-<div class="detail-view-wrapper">
-    <app-edit-product></app-edit-product>
-    <app-product-details
-        [currentProduct]="currentProduct">
-    </app-product-details>
+<div class="detail-view-wrapper u-flex-column">
+    <div class="product u-flex-row">
+        <app-edit-product></app-edit-product>
+        <app-product-details></app-product-details>
+    </div>
+
+    <button mat-raised-button color="accent" (click)="onBackClick()">Back</button>
 </div>

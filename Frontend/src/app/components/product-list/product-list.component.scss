@@ -1,10 +1,6 @@
 @import 'variables';
 
-.products-list-wrapper {
-    margin: 2rem;
-    background-color: $color-white;
-    padding: 3rem;
-    box-shadow: $base-shadow;
+.products-list {
     height: 500px;
 
     table {

@@ -1,7 +1,27 @@
+@import 'variables';
+
 .detail-view-wrapper {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    box-shadow: $base-shadow;
     height: 100%;
+
+    .product {
+        justify-content: center;
+        align-items: center;
+    }
+
+    button {
+        border: none;
+        background-color: $color-primary;
+        color: $color-white;
+        padding: .5rem;
+        margin: 2rem;
+        box-shadow: $base-shadow;
+
+        &:hover {
+            color: $color-secondary-light;
+            cursor: pointer;
+        }
+    }
 }

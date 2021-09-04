@@ -1,10 +1,6 @@
 @import 'variables';
 
-.add-product-wrapper {
-    background-color: $color-white;
-    padding: 3rem;
-    margin: 2rem;
-    box-shadow: $base-shadow;
+.add-product {
     height: 500px;
 
     .product-form {

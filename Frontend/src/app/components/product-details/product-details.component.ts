@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Observable, Subject } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 
 @Component({
@@ -6,13 +8,25 @@ import { Product } from 'src/app/models/product.model';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
 
-  @Input() currentProduct: Product;
+  currentProduct$: Observable<Product>;
+  currentProduct: Product;
 
-  constructor() { }
+  private unsubscribe = new Subject<void>();
+
+  constructor(private store: Store) {
+    this.currentProduct$ = this.store.select(state => state.products.currentProduct);
+  }
 
   ngOnInit(): void {
+    this.currentProduct$.subscribe(product => {
+      this.currentProduct = product;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.complete();
   }
 
 }
