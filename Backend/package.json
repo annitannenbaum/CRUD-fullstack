@@ -4,7 +4,7 @@
   "description": "A small showcase of a CRUD-app using Angular, Node JS and Mongo DB",
   "main": "app.ts",
   "scripts": {
-    "start": "tsc && node --unhandled-rejections=strict ./dist/app.js",
+    "start": "tsc && node --unhandled-rejections=strict ./dist/src/app.js",
     "debug": "SET DEBUG=app && npm run start",
     "test": "mocha -r ts-node/register 'test/**/*.test.ts' --unhandled-rejections=strict",
     "test-debug": "export DEBUG=* && npm test"
