@@ -96,10 +96,15 @@ export class ProductsState {
     updateProduct(ctx: StateContext<ProductsStateModel>, action: UpdateProduct) {
         return this.productsService.updateProduct(action.product).pipe(tap(() => {
             const state = ctx.getState();
+
+            let productToChange = state.products.find(
+                product => product._id === action.product._id
+            ); // prevent duplicate in product list
+            
             ctx.patchState({
                 products: [
                     ...state.products,
-                    {...action.product}
+                    productToChange = {...action.product}
                 ],
                 currentProduct: {
                     ...action.product
