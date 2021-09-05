@@ -11,8 +11,6 @@ export class ProductsService {
 
     getAllProducts() {
         return this.http.get<Product[]>('http://localhost:3000/products');
-
-        // TO DO extract logic into env variable
     }
 
     addProduct(product: Product) {

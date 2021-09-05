@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, UpdateState } from '@ngxs/store';
 
-import { take, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { ProductsService } from '../api/products.api';
 import { Product } from '../models/product.model';
-import { ProductsStateModel } from '../models/products.state.model';
-import { AddProduct, GetAllProducts, GetCurrentProduct, SetCurrentProduct, UpdateProduct } from './products.actions';
+import { ProductsStateModel } from './products.state.model';
+import { AddProduct, GetAllProducts, SetCurrentProduct, UpdateProduct } from './products.actions';
 
 @State<ProductsStateModel>({
     name: 'products',

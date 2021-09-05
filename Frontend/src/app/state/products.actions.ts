@@ -10,11 +10,6 @@ export class SetCurrentProduct {
     constructor(public _id: string) {}
 }
 
-export class GetCurrentProduct {
-    static readonly type = '[Products] Get Current Product';
-    constructor() {}
-}
-
 export class AddProduct {
     static readonly type = '[Products] Add Product';
     constructor(public product: Product) {}
