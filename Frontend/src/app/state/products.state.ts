@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Action, State, StateContext, UpdateState } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
+import { patch, updateItem } from '@ngxs/store/operators';
 
-import { take, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 import { ProductsService } from '../api/products.api';
 import { Product } from '../models/product.model';
 import { ProductsStateModel } from '../models/products.state.model';
-import { AddProduct, GetAllProducts, GetCurrentProduct, SetCurrentProduct, UpdateProduct } from './products.actions';
+import { AddProduct, GetAllProducts, SetCurrentProduct, UpdateProduct } from './products.actions';
 
 @State<ProductsStateModel>({
     name: 'products',
@@ -57,7 +58,7 @@ export class ProductsState {
                 currentProduct: {
                     ...productToFind
                 }
-            })
+            });
             return productToFind;
 
         } else {
@@ -96,20 +97,17 @@ export class ProductsState {
     updateProduct(ctx: StateContext<ProductsStateModel>, action: UpdateProduct) {
         return this.productsService.updateProduct(action.product).pipe(tap(() => {
             const state = ctx.getState();
-
-            let productToChange = state.products.find(
-                product => product._id === action.product._id
-            ); // prevent duplicate in product list
             
-            ctx.setState({
-                products: [
-                    ...state.products,
-                    productToChange = {...action.product}
-                ],
+            ctx.setState(patch({
+                products: updateItem<Product>(product => product._id === action.product._id, {...action.product})
+                })
+            );
+
+            ctx.patchState({
                 currentProduct: {
                     ...action.product
                 }
-            })
+            });
         }
         ))
     }
