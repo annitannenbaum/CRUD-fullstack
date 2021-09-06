@@ -101,7 +101,7 @@ export class ProductsState {
                 product => product._id === action.product._id
             ); // prevent duplicate in product list
             
-            ctx.patchState({
+            ctx.setState({
                 products: [
                     ...state.products,
                     productToChange = {...action.product}
