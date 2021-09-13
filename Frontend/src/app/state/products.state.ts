@@ -86,7 +86,7 @@ export class ProductsState {
                 ctx.patchState({
                     products: [
                         ...state.products,
-                        {...action.product, ...productsResult} // add backend generated id to new product object
+                        {...action.product, _id: productsResult} // add backend generated id to new product object
                     ]
                 });
             })
@@ -97,7 +97,7 @@ export class ProductsState {
     updateProduct(ctx: StateContext<ProductsStateModel>, action: UpdateProduct) {
         return this.productsService.updateProduct(action.product).pipe(tap(() => {
             const state = ctx.getState();
-            
+
             ctx.setState(patch({
                 products: updateItem<Product>(product => product._id === action.product._id, {...action.product})
                 })

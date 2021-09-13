@@ -14,7 +14,7 @@ export class ProductsService {
     }
 
     addProduct(product: Product) {
-        return this.http.post<Product>('http://localhost:3000/products', product);
+        return this.http.post<string>('http://localhost:3000/products', product);
     }
 
     updateProduct(product: Product) {
